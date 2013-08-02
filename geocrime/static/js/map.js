@@ -105,8 +105,6 @@ function clicked(d) {
         return centered && d === centered;
     });
 
-  $(".county active").css('z-index', 4);
-
   g.selectAll('path.county')
     .classed("inactive", function(e) {
       return centered && e.properties.STATEFP != centered.id;
@@ -129,6 +127,7 @@ function loadYearVar(argObject) {
       }
     }
   });
+  loadYearVarHistogram(argObject);
 }
 
 $(".offenseButton").click(function(e){
@@ -144,3 +143,58 @@ $(".yearButton").click(function(e){
   $(this)
       .parent().attr("class", 'pure-menu-selected')
 });
+
+// START HISTOGRAM MENU
+
+function getCount(obj){
+  return parseInt(obj[1]);
+}
+
+function scaleHistogram(obj, low, high, width){
+  count = getCount(obj);
+  var extent = (high - low);
+  var offSet = (count - low);
+  var totalOffset = (offSet / extent);
+  var scaledWidth = totalOffset * width;
+  return {'scaledWidth': scaledWidth, 'count': count, 'fips': obj[0]};
+}
+
+function loadYearVarHistogram(argObject){
+  var uri = ["/histogram/national", argObject.year.toString(), argObject.variable].join('/')
+  var statsBox = $("#statsBox");
+  statsBox.empty();
+  d3.json(uri, function(error, histogram) {
+    var fipsKeys = histogram.fips
+    var counts = histogram.data.map(getCount);
+    var bounds = d3.extent(counts);
+    var low = bounds[0];
+    var high = bounds[1];
+    for (index in histogram.data) {
+      var hist = scaleHistogram(histogram.data[index], low, high, 150);
+      
+      var container = document.createElement('div');
+      container.setAttribute('class', 'bar-container');
+      
+      var indicator = document.createElement('div');
+      indicator.setAttribute('class', 'bar-indicator');
+      indicator.setAttribute('style', 'width:' + Math.round(hist.scaledWidth).toString() +"px;");
+      
+      var numberLabel = document.createElement('div');
+      numberLabel.setAttribute('class', 'bar-indicator-numeric');
+      var number = document.createTextNode(hist.count.toString());
+      numberLabel.appendChild(number);
+
+      var label = document.createElement('div');
+      label.setAttribute('class', 'bar-label');
+      var text = document.createTextNode(fipsKeys[hist.fips]);
+      label.appendChild(text);
+      
+      container.appendChild(indicator);
+      container.appendChild(numberLabel);
+      container.appendChild(label);
+      statsBox.append(container);
+    }
+  });
+}
+
+loadYearVarHistogram({'year': 2004, 'variable': 'murder'});

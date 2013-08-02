@@ -1,8 +1,46 @@
+div.bar-container {
+    height: 16px;
+}
+
+div.bar-label {
+    font: 11px sans-serif;
+    font-style:bold;
+    text-align: right;
+    color: white;
+    margin-right: 4px;
+}
+div.bar-indicator-numeric { 
+    height: 12px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    font: 9px sans-serif;
+    vertical-align: middle;
+    font-style: bold;
+    text-align: left;
+    color: rgb(236, 231, 242);
+    float: left;
+}
+
+div.bar-indicator {
+   height: 12px;
+   text-align: right;
+   color: white;
+   font: 11px sans-serif;
+   background-color: rgb(4, 90, 141);
+   border: black;
+   border-width: 2px;
+   margin-top: 2px;
+   margin-bottom: 2px;
+   margin-left: 2px;
+   float: left;
+ }
+
 .county {
   z-index: 1;
   fill: rgb(217, 217, 217);
   stroke: rgb(189, 189, 189);
-  stroke-width: .5px;
+  stroke-width: 0.5px;
 }
 
 .county.empty {
@@ -36,6 +74,8 @@ path.inactive {
   position: absolute;
   opacity: 0.0;
   fill: #191818;
+  stroke: #191818;
+  stroke-width: 2px;
 }
 
 .state:hover {
@@ -148,3 +188,56 @@ path.inactive {
 #menuRight .pure-menu-selected a { color: #fff; }
 
 #menuRight li.pure-menu-selected a:hover, #menuRight li.pure-menu-selected a:focus { background: none; }
+
+
+#statsBox {
+    -webkit-overflow-scroll: touch;
+    background: #1f8dd6;
+    bottom: 0;
+    left: 1050px;
+    margin-left: 250px; /* "#statsBox" width */
+    overflow-y: auto;
+    position: fixed;
+    text-indent: 2px;
+    top: 0;
+    width: 250px;
+    z-index: 1001; /* so the menu or its navicon stays above all content */
+    border: rgb(8, 48, 107);
+    border-width: 5px;
+}
+
+#statsBox a {
+    border: none;
+    color: #fff;
+    padding: 0.6em 0 0.6em 0.6em;
+    white-space: normal;
+}
+
+#statsBox .pure-menu-open { background: transparent; border: 0; }
+
+#statsBox .pure-menu ul { background: transparent; border: none; }
+
+#statsBox .pure-menu ul, #statsBox .pure-menu .menu-item-divided { border-top: 1px solid #333; }
+
+#statsBox .pure-menu li a:hover, #statsBox .pure-menu li a:focus { background: #1f8dd6; }
+
+.pure-menu-link {
+    background: rgba(0,0,0,0.7);
+    background: #000;
+    display: none; /* show this only on small screens */
+    left: 350px; /* "#statsBox width" */
+    padding: 0.75em 1em;
+    top: 0;
+}
+
+.pure-menu-link:hover, .pure-menu-link:focus { background: #000; }
+
+#statsBox .pure-menu-heading { color: #fff; font-size: 110%; }
+
+#statsBox .pure-menu-heading:hover, #statsBox .pure-menu-heading:focus { color: #999; }
+
+#statsBox .pure-menu-selected { background: #1f8dd6; }
+
+#statsBox .pure-menu-selected a { color: #fff; }
+
+#statsBox li.pure-menu-selected a:hover, #statsBox li.pure-menu-selected a:focus { background: none; }
