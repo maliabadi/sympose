@@ -1,4 +1,4 @@
-`from flask import Flask, render_template, jsonify, url_for, Response
+from flask import Flask, render_template, jsonify, url_for, Response
 from os import getcwd
 from math import log
 import json
@@ -24,10 +24,14 @@ def provide_quantization(nparts, data):
         strata.append([marker, marker + chunk_size])
         marker += chunk_size
     chunked = {"cloro-%s" % x: {} for x,y in enumerate(strata)}
+    chunked['cloro-blank'] = {}
     for key, value in data.items():
-        match = filter(lambda x: x[0] <= value and x[1] > value, strata)[0]
-        idx = strata.index(match)
-        chunked["cloro-%s" % idx][key] = value
+        if value < 0:
+            chunked['cloro-blank'][key] = value
+        else:
+            match = filter(lambda x: x[0] <= value and x[1] > value, strata)[0]
+            idx = strata.index(match)
+            chunked["cloro-%s" % idx][key] = value
     return chunked
 
 app = Flask(__name__)
@@ -39,7 +43,9 @@ def index():
     return render_template('index.html')
 
 def zero_or_log(value):
-    if not value or int(value) == 0:
+    if value is None:
+        return -1
+    if int(value) == 0:
         return 0
     else:
         return log(value, 10)

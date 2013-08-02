@@ -1,178 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-<style>
-
-path {
-  fill: none;
-  stroke: rgb(189, 189, 189);
-  stroke-width: .25px;
-  stroke-linejoin: round;
-}
-
-#map {
-  margin-left: 250px;
-}
-
-#menu {
-    margin-left: -250px; /* "#menu" width */
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 250px;
-    bottom: 0;
-    z-index: 1000; /* so the menu or its navicon stays above all content */
-    background: #191818;
-    overflow-y: auto;
-    -webkit-overflow-scroll: touch;
-}
-    #menu a {
-        color: #999;
-        border: none;
-        white-space: normal;
-        padding: 0.6em 0 0.6em 0.6em;
-    }
-
-    #menu .pure-menu-open {
-        background: transparent;
-        border: 0;
-    }
-
-    #menu .pure-menu ul {
-        border: none;
-        background: transparent;
-    }
-
-    #menu .pure-menu ul,
-    #menu .pure-menu .menu-item-divided {
-        border-top: 1px solid #333;
-    }
-
-        #menu .pure-menu li a:hover,
-        #menu .pure-menu li a:focus {
-            background: #333;
-        }
-
-    .pure-menu-link {
-        display: none; /* show this only on small screens */
-        top: 0;
-        left: 250px; /* "#menu width" */
-        background: #000;
-        background: rgba(0,0,0,0.7);
-        padding: 0.75em 1em;
-    }
-
-        .pure-menu-link:hover,
-        .pure-menu-link:focus {
-            background: #000;
-        }
-
-    #menu .pure-menu-heading {
-        font-size: 110%;
-        color: #fff;
-    }
-    #menu .pure-menu-heading:hover,
-    #menu .pure-menu-heading:focus {
-        color: #999;
-    }
-
-    #menu .pure-menu-selected {
-        background: #1f8dd6;
-    }
-
-        #menu .pure-menu-selected a {
-            color: #fff;
-        }
-
-        #menu li.pure-menu-selected a:hover,
-        #menu li.pure-menu-selected a:focus {
-            background: none;
-        }
-
-#map {
-  margin-left: 350px;
-}
-
-#menuRight {
-    margin-left: 250px; /* "#menuRight" width */
-    width: 75px;
-    text-indent: 2px;
-    position: fixed;
-    top: 0;
-    left: 0px;
-    bottom: 0;
-    z-index: 1001; /* so the menu or its navicon stays above all content */
-    background: #333;
-    overflow-y: auto;
-    -webkit-overflow-scroll: touch;
-}
-    #menuRight a {
-        color: #fff;
-        border: none;
-        white-space: normal;
-        padding: 0.6em 0 0.6em 0.6em;
-    }
-
-    #menuRight .pure-menu-open {
-        background: transparent;
-        border: 0;
-    }
-
-    #menuRight .pure-menu ul {
-        border: none;
-        background: transparent;
-    }
-
-    #menuRight .pure-menu ul,
-    #menuRight .pure-menu .menu-item-divided {
-        border-top: 1px solid #333;
-    }
-
-        #menuRight .pure-menu li a:hover,
-        #menuRight .pure-menu li a:focus {
-            background: #1f8dd6;
-        }
-
-    .pure-menu-link {
-        display: none; /* show this only on small screens */
-        top: 0;
-        left: 350px; /* "#menuRight width" */
-        background: #000;
-        background: rgba(0,0,0,0.7);
-        padding: 0.75em 1em;
-    }
-
-        .pure-menu-link:hover,
-        .pure-menu-link:focus {
-            background: #000;
-        }
-
-    #menuRight .pure-menu-heading {
-        font-size: 110%;
-        color: #fff;
-    }
-    #menuRight .pure-menu-heading:hover,
-    #menuRight .pure-menu-heading:focus {
-        color: #999;
-    }
-
-    #menuRight .pure-menu-selected {
-        background: #1f8dd6;
-    }
-
-        #menuRight .pure-menu-selected a {
-            color: #fff;
-        }
-
-        #menuRight li.pure-menu-selected a:hover,
-        #menuRight li.pure-menu-selected a:focus {
-            background: none;
-        }
-
-
-
-</style>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 <div class='pure-g'>
@@ -259,6 +89,10 @@ path {
     </div>
 
     <div class="pure-u-4-5 main" id='map'> 
+    </div>
+    <div class="pure-u-4-5 statbox" id='statbox'>
+    </div>
+    <div class="pure-u-4-5 chronology" id='chronology'>
     </div>
 </div>
 
