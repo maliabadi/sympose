@@ -1,100 +1,22 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<div class='pure-g'>
-    <div class="pure-u-1-5 sidebar" id='menuRight'>
-      <div class="pure-menu pure-menu-open">
-          <a class="pure-menu-heading">Year</a>
-
-        <ul id='years'>
-          <li><a href="#" class='yearButton' name="1977">1977</a></li>
-          <li><a href="#" class='yearButton' name="1978">1978</a></li>
-          <li><a href="#" class='yearButton' name="1979">1979</a></li>
-          <li><a href="#" class='yearButton' name="1980">1980</a></li>
-          <li><a href="#" class='yearButton' name="1981">1981</a></li>
-          <li><a href="#" class='yearButton' name="1982">1982</a></li>
-          <li><a href="#" class='yearButton' name="1983">1983</a></li>
-          <li><a href="#" class='yearButton' name="1984">1984</a></li>
-          <li><a href="#" class='yearButton' name="1985">1985</a></li>
-          <li><a href="#" class='yearButton' name="1986">1986</a></li>
-          <li><a href="#" class='yearButton' name="1987">1987</a></li>
-          <li><a href="#" class='yearButton' name="1988">1988</a></li>
-          <li><a href="#" class='yearButton' name="1989">1989</a></li>
-          <li><a href="#" class='yearButton' name="1990">1990</a></li>
-          <li><a href="#" class='yearButton' name="1991">1991</a></li>
-          <li><a href="#" class='yearButton' name="1992">1992</a></li>
-          <li><a href="#" class='yearButton' name="1993">1993</a></li>
-          <li><a href="#" class='yearButton' name="1994">1994</a></li>
-          <li><a href="#" class='yearButton' name="1995">1995</a></li>
-          <li><a href="#" class='yearButton' name="1996">1996</a></li>
-          <li><a href="#" class='yearButton' name="1997">1997</a></li>
-          <li><a href="#" class='yearButton' name="1998">1998</a></li>
-          <li><a href="#" class='yearButton' name="1999">1999</a></li>
-          <li><a href="#" class='yearButton' name="2000">2000</a></li>
-          <li><a href="#" class='yearButton' name="2001">2001</a></li>
-          <li><a href="#" class='yearButton' name="2002">2002</a></li>
-          <li><a href="#" class='yearButton' name="2003">2003</a></li>
-          <li><a href="#" class='yearButton' name="2004">2004</a></li>
-          <li><a href="#" class='yearButton' name="2005">2005</a></li>
-        </ul>
-      </div>
+  <div class='main'>
+    <div id='map'>
     </div>
-    <div class="pure-u-4-5 main" id='map'>
+    <div id='histogram'>
     </div>
-    <div class="pure-u-1-5 statbox" id='statsBox'></div>
-</div>
-
-<div class='pure-g'>
-    <div class="pure-u-1-5 sidebar" id='menu'>
-      <div class="pure-menu pure-menu-open">
-          <a class="pure-menu-heading">By Offense</a>
-
-        <ul id='offenses'>
-          <li><a href="#" class='offenseButton' name="violent_crimes">Violent Crime</a></li>
-          <li><a href="#" class='offenseButton' name="property_crimes">Property Crime</a></li>
-          <li><a href="#" class='offenseButton' name="murder">Murder</a></li>
-          <li><a href="#" class='offenseButton' name="rape">Rape</a></li>
-          <li><a href="#" class='offenseButton' name="robbery">Robbery</a></li>
-          <li><a href="#" class='offenseButton' name="aggravated_assaults">Aggravated Assault</a></li>
-          <li><a href="#" class='offenseButton' name="burglary">Burglary</a></li>
-          <li><a href="#" class='offenseButton' name="larceny">Larceny</a></li>
-          <li><a href="#" class='offenseButton' name="auto_thefts">Auto Theft</a></li>
-          <li><a href="#" class='offenseButton' name="arson">Arson</a></li>
-          <li><a href="#" class='offenseButton' name="other_assaults">Other Assault</a></li>
-          <li><a href="#" class='offenseButton' name="forgerycounterfeiting">Forgery / Counterfeiting</a></li>
-          <li><a href="#" class='offenseButton' name="fraud">Fraud</a></li>
-          <li><a href="#" class='offenseButton' name="embezzlement">Embezzlement</a></li>
-          <li><a href="#" class='offenseButton' name="have_stolen_property">Posession of Stolen Property</a></li>
-          <li><a href="#" class='offenseButton' name="vandalism">Vandalism</a></li>
-          <li><a href="#" class='offenseButton' name="weapons_violations">Weapons Violations</a></li>
-          <li><a href="#" class='offenseButton' name="prostitutioncomm_vice">Prostitution</a></li>
-          <li><a href="#" class='offenseButton' name="sex_offenses">Sex Offenses</a></li>
-          <li><a href="#" class='offenseButton' name="drug_abuse_violationstotal">Drug Abuse Violations</a></li>
-          <li><a href="#" class='offenseButton' name="drug_abuse_salemanufacture">Drug Manufacture</a></li>
-          <li><a href="#" class='offenseButton' name="opiumcocainesalemanufacture">Opium / Cocaine Sale & Manufacture</a></li>
-          <li><a href="#" class='offenseButton' name="marijuanasalemanufacture">Marijuana Sale & Manufacture</a></li>
-          <li><a href="#" class='offenseButton' name="syntheticdrug_salemanufacture">Synthetic Drug Sale & Manufacture</a></li>
-          <li><a href="#" class='offenseButton' name="otherdang_nonnarcotics">Drugs (Non Narcotic)</a></li>
-          <li><a href="#" class='offenseButton' name="drug_possession_subtotal">Drug Possession</a></li>
-          <li><a href="#" class='offenseButton' name="opiumcocaine_possession">Opium / Cocaine Possession</a></li>
-          <li><a href="#" class='offenseButton' name="marijuana_possession">Marijuana Possession</a></li>
-          <li><a href="#" class='offenseButton' name="synthetic_narcoticspossession">Synthetic Narcotics Posession</a></li>
-          <li><a href="#" class='offenseButton' name="drug_possession_other">Drug Possession (Other)</a></li>
-          <li><a href="#" class='offenseButton' name="driving_under_influence">DUI </a></li>
-        </ul>
-      </div>
+    <div id='timeline'>
     </div>
-    
-    <div class="pure-u-4-5 chronology" id='chronology'>
-    </div>
-</div>
-
-<script src="{{ url_for('static', filename='js/d3.js') }}"></script>
-<script src="{{ url_for('static', filename='js/topojson.v1.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/jquery-1.10.2.js') }}"></script>
-<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+  </div>
+</body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/histogram.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/timeline.js') }}"></script>
 
