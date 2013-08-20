@@ -24,10 +24,6 @@ function load_year_var_histogram(arg) {
     var bounds = d3.extent(counts);
     var low = bounds[0];
     var high = bounds[1];
-    console.log(counts);
-    console.log(bounds);
-    console.log(low);
-    console.log(high);
     for (i in histogram) {
       var hist = histogram_scale(histogram[i], low, high, 150);
       var container = document.createElement('div');

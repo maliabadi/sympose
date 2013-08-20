@@ -9,7 +9,6 @@ function load_variables(event){
         .done(function(data){
             var ul = document.createElement('ul');
             for ( i in data ){
-                console.log(data[i]);
                 var li = document.createElement('li');
                 var a = document.createElement('a');
                 a.setAttribute('href', '#');
