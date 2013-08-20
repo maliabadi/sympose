@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql.expression import cast
-from sqlalchemy import Integer
+from sqlalchemy import Integer, func
 from ucr.db.models import County, Variable, Statistic, YearVariable, engine
 
 Session = sessionmaker(bind=engine)
@@ -17,7 +17,46 @@ def year_variable(year, var):
 
 
 def histogram_national(year, var):
-    pass
+    """
+    SELECT
+        county.state_name as state,
+        sum(statistic.count) as count_sum
+    FROM
+        county
+    INNER JOIN
+        statistic
+    ON county.fips = statistic.fips
+    WHERE
+        statistic.variable_id = 12
+        AND statistic.year = 1977
+    GROUP BY
+        county.state_name
+    """
+    query = session.query(County.state_name.label('state'),
+                          func.sum(Statistic.count).label('count_sum')) \
+        .filter(County.fips == Statistic.fips) \
+        .filter(Statistic.variable_id == var) \
+        .filter(Statistic.year == year)
+    return query
+
+
+def timeline_variable(var):
+    """
+    SELECT
+        year_variable.year,
+        year_variable.national
+    FROM
+        year_variable
+    WHERE
+        variable_id = 12
+    GROUP BY
+        year;
+    """
+    query = session.query(YearVariable.year.label('x'),
+                          YearVariable.national.label('y')) \
+        .filter(YearVariable.variable_id == var) \
+        .group_by(YearVariable.year)
+    return query
 
 
 def get_years():

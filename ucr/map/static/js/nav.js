@@ -24,15 +24,16 @@ function load_variables(event){
 }
 
 function load_year_variable(event) {
-  var year = event.currentTarget.getAttribute('id');
-  var variable_id = $(".active").attr('id');
-  var uri = ["/year", year, variable_id].join('/');
+  var variable_id = event.currentTarget.getAttribute('id');
+  var year = $(".active").attr('id');
+  var uri = ["/year", variable_id, year].join('/');
   d3.json(uri, function(error, data) {
     for ( fips in data ) {
         d3.select( "#fips_" + fips )
           .style("fill", data[fips]);
       }
     });
+  load_variable_timeline(variable_id);
 }
 
 

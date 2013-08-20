@@ -39,3 +39,4 @@ class YearVariable(Base):
     id = Column(Integer, primary_key=True)
     variable_id = Column(Integer)
     year = Column(Integer)
+    national = Column(Integer)
