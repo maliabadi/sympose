@@ -36,7 +36,9 @@ def histogram_national(year, var):
                           func.sum(Statistic.count).label('count_sum')) \
         .filter(County.fips == Statistic.fips) \
         .filter(Statistic.variable_id == var) \
-        .filter(Statistic.year == year)
+        .filter(Statistic.year == year) \
+        .group_by(County.state_name) \
+        .order_by('count_sum DESC')
     return query
 
 

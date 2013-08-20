@@ -1,4 +1,4 @@
-from ucr.util import quantize, format_timeline
+from ucr.util import quantize, format_timeline, format_histogram
 import ucr.db.query as q
 
 from flask import Flask, render_template, jsonify, url_for, Response
@@ -22,7 +22,8 @@ def year_variable(year, var):
 
 @app.route('/histogram/national/<year>/<var>')
 def histogram_national(year, var):
-    response = quantize(q.year_variable(year, var))
+    query = q.histogram_national(year, var)
+    response = format_histogram(query)
     return Response(response=json.dumps(response), status=200,
                     mimetype='application/json')
 

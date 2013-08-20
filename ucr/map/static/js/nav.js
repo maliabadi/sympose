@@ -34,6 +34,7 @@ function load_year_variable(event) {
       }
     });
   load_variable_timeline(variable_id);
+  load_year_var_histogram({'year': year, 'variable': variable_id})
 }
 
 

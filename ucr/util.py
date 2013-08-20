@@ -61,3 +61,7 @@ def quantize(query):
 
 def format_timeline(query):
     return [{'year': k.x, 'count': k.y} for k in query.all()]
+
+
+def format_histogram(query):
+    return [{'count': int(x.count_sum), 'name': x.state} for x in query.all()]

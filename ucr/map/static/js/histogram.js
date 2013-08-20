@@ -1,5 +1,5 @@
 function getCount(obj) {
-  return parseInt(obj[1]);
+  return parseInt(obj.count);
 }
 
 function histogram_scale(obj, low, high, width) {
@@ -20,13 +20,16 @@ function load_year_var_histogram(arg) {
   var statsBox = $("#histogram");
   statsBox.empty();
   d3.json(uri, function(error, histogram) {
-    var fipsKeys = histogram.fips
-    var counts = histogram.data.map(getCount);
+    var counts = histogram.map(getCount);
     var bounds = d3.extent(counts);
     var low = bounds[0];
     var high = bounds[1];
-    for (index in histogram.data) {
-      var hist = histogram_scale(histogram.data[index], low, high, 150);
+    console.log(counts);
+    console.log(bounds);
+    console.log(low);
+    console.log(high);
+    for (i in histogram) {
+      var hist = histogram_scale(histogram[i], low, high, 150);
       var container = document.createElement('div');
       container.setAttribute('class', 'bar-container');
       var indicator = document.createElement('div');
@@ -38,7 +41,7 @@ function load_year_var_histogram(arg) {
       numberLabel.appendChild(number);
       var label = document.createElement('div');
       label.setAttribute('class', 'bar-label');
-      var text = document.createTextNode(fipsKeys[hist.fips]);
+      var text = document.createTextNode(histogram[i].name);
       label.appendChild(text);
       container.appendChild(indicator);
       container.appendChild(numberLabel);
