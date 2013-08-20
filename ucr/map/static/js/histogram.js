@@ -1,17 +1,21 @@
-function getCount(obj){
+function getCount(obj) {
   return parseInt(obj[1]);
 }
 
-function histogram_scale(obj, low, high, width){
+function histogram_scale(obj, low, high, width) {
   count = getCount(obj);
   var extent = (high - low);
   var offSet = (count - low);
   var totalOffset = (offSet / extent);
   var scaledWidth = totalOffset * width;
-  return {'scaledWidth': scaledWidth, 'count': count, 'fips': obj[0]};
+  return {
+    'scaledWidth': scaledWidth,
+    'count': count,
+    'fips': obj[0]
+  };
 }
 
-function load_year_var_histogram(arg){
+function load_year_var_histogram(arg) {
   var uri = ["/histogram/national", arg.year.toString(), arg.variable].join('/')
   var statsBox = $("#histogram");
   statsBox.empty();
@@ -27,7 +31,7 @@ function load_year_var_histogram(arg){
       container.setAttribute('class', 'bar-container');
       var indicator = document.createElement('div');
       indicator.setAttribute('class', 'bar-indicator');
-      indicator.setAttribute('style', 'width:' + Math.round(hist.scaledWidth).toString() +"px;");
+      indicator.setAttribute('style', 'width:' + Math.round(hist.scaledWidth).toString() + "px;");
       var numberLabel = document.createElement('div');
       numberLabel.setAttribute('class', 'bar-indicator-numeric');
       var number = document.createTextNode(hist.count.toString());
