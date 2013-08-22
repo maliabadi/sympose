@@ -1,5 +1,5 @@
-var chartMargin = {top: 20, right: 3, bottom: 0, left: 0},
-    chartWidth = 500 - chartMargin.left - chartMargin.right,
+var chartMargin = {top: 0, right: 0, bottom: 0, left: 0},
+    chartWidth = 460 - chartMargin.left - chartMargin.right,
     chartHeight = 200 - chartMargin.top - chartMargin.bottom;
 
 var x = d3.time.scale()
@@ -19,7 +19,8 @@ var yAxis = d3.svg.axis()
 var area = d3.svg.area()
     .x(function(d) { return x(d.year); })
     .y0(chartHeight)
-    .y1(function(d) { return y(d.count); });
+    .y1(function(d) { return y(d.count); })
+    .interpolate('basis');
 
 var timeline = d3.select("#timeline").append("svg")
     .attr("width", chartWidth + chartMargin.left + chartMargin.right)

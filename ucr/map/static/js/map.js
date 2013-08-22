@@ -1,9 +1,14 @@
-var width = 960, height = 600, svg, path, projection;
+var width = 720, height = 400, svg, path, projection;
 
 function loadMap(){
   
   path = d3.geo.path();
-  projection = path.projection(d3.geo.albersUsa());
+
+  var albers = d3.geo.albersUsa()
+    .scale(800)
+    .translate([360, 200]);
+
+  projection = path.projection(albers);
 
   svg = d3.select("#map")
     .append("svg")
@@ -13,6 +18,7 @@ function loadMap(){
 
   d3.json("/static/data/geo/topology.json", function(error, us) {
     counties = topojson.feature(us, us.objects.tl_2012_us_county).features
+
     svg.append("g")
       .attr("class", "counties")
       .selectAll("path.counties")

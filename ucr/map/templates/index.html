@@ -1,28 +1,57 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Geography of Crime Data | 1977 - 2008</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui-1.10.3.custom.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/vendor/jquery-ui-1.10.3.custom.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/custom.modernizr.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/foundation.min.js')}}"></script>
+
 </head>
-<body>
-  <div class='main'>
-    <div id='map'>
-    </div>
-    <div id='nav'>
-      <div id='years'>
+
+<body>  
+  <div class="row" id='page'>
+    <div class="large-9 push-3 columns" id='main-container'>
+      <div id="infowrap">
+        <div id="year">
+          <h3></h3>
+        </div>
+        <div id="variable">
+          <h3>
+            <small></small>
+          </h3> 
+        </div>
       </div>
-      <div id='variables'>
+      <div id="slider"></div>
+      <div id="map"></div>
+      <div class="large-8 columns" id='timeline'></div>
+      <div class="large-4 columns" id='histogram'></div>
+    </div>
+    <div class="large-3 pull-9 columns" id='nav-left'>
+      <div class="docs section-container accordion" data-section="accordion">
+        <section class="section " id='variables'>
+          <p class="title" id='ctype'>
+            <a href="#">Crime Type</a>
+          </p>
+        </section>
       </div>
-    </div>
-    <div id='histogram'>
-    </div>
-    <div id='timeline'>
     </div>
   </div>
+  <script>
+    $(document).foundation();
+  </script>
+
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/histogram.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/timeline.js') }}"></script>
 </body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://d3js.org/topojson.v1.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="{{ url_for('static', filename='js/map.js') }}"></script>
-<script src="{{ url_for('static', filename='js/nav.js') }}"></script>
-<script src="{{ url_for('static', filename='js/histogram.js') }}"></script>
-<script src="{{ url_for('static', filename='js/timeline.js') }}"></script>
+</html>

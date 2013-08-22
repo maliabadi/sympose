@@ -17,7 +17,7 @@ def normalize(row):
     if row.scount is None or int(row.scount) == 0:
         row.scount = 0
     else:
-        row.scount = log(int(row.scount), 2)
+        row.scount = log(int(row.scount), 10)
     return row
 
 

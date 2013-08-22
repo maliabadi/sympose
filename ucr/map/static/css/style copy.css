@@ -13,11 +13,22 @@
 #map {
     width: 720px;
     height: 400px;
+    background: rgb(204, 204, 204);
 }
 
 #slider {
     margin-bottom: 10px;
 
+}
+
+#histogram {
+    background: black;
+    height: 400px;
+}
+
+#timeline {
+    height: 400px;
+    background: #c8c8c8;
 }
 
 #nav-left {
@@ -42,11 +53,6 @@
     color: white;
 }
 
-
-a .active {
-  font-style: bold;
-}
-
 #inactive {
     background: rgb(198, 219, 239);
 }
@@ -58,21 +64,9 @@ a .active {
   shape-rendering: crispEdges;
 }
 
-.x.axis path {
-  display: none;
-}
-
 .area {
-  fill: rgb(158, 202, 225);
-  stroke: rgb(8, 81, 156);
-  stroke-width: 1px;
+  fill: steelblue;
 }
-
-.timeline-svg {
-  border-width: 2px;
-  border-color: black;
-}
-
 
 div.bar-container {
     height: 16px;
@@ -80,10 +74,9 @@ div.bar-container {
 
 div.bar-label {
     font: 11px sans-serif;
-    font-family: "Menlo";
     font-style:bold;
     text-align: right;
-    color: black;
+    color: white;
     margin-right: 4px;
 }
 div.bar-indicator-numeric { 
@@ -95,16 +88,16 @@ div.bar-indicator-numeric {
     vertical-align: middle;
     font-style: bold;
     text-align: left;
-    color: black;
+    color: rgb(236, 231, 242);
     float: left;
 }
 
 div.bar-indicator {
    height: 12px;
    text-align: right;
-   color: black;
+   color: white;
    font: 11px sans-serif;
-   background-color: #B28029;
+   background-color: rgb(4, 90, 141);
    border: black;
    border-width: 2px;
    margin-top: 2px;
@@ -113,23 +106,6 @@ div.bar-indicator {
    float: left;
  }
 
-
-.counties {
-  fill: white;
-  stroke: #fff;
-  stroke-width: 1;
-  stroke-linejoin: round;
-}
-
-path.county {
-  color: none;
-  fill: white;
-  stroke: #fff;
-  stroke-width: 1.1;
-  stroke-linejoin: round;
-}
-
-#timeline {
-  border-width: 1px;
-  border-color: black;
+#statbox {
+    fill: #191818;
 }
